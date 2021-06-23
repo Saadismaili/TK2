@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_tags_form_inherit" model="ir.ui.view">
+            <field name="name">product.template.tags.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </field>
+            </field>
+        </record>
+        <record id="product_template_tags_tree_inherit" model="ir.ui.view">
+            <field name="name">product.template.tags.tree.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_template_search_inherit_tags" model="ir.ui.view">
+            <field name="name">product.template.search.inherit.tags</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <!--<filter string="Production" name="prodcut_tmpl_prod"
+                            domain="[('category_id', 'ilike', 'PRODUCTION')]"/>
+                    <filter string="Parc" name="prodcut_tmpl_parc"
+                            domain="[('category_id', 'ilike', 'PARC')]"/>-->
+                    <filter string="Import" name="prodcut_tmpl_import"
+                            domain="[('tag_ids', 'ilike', 'IMPORT')]"/>
+                    <filter string="Local" name="prodcut_tmpl_export"
+                            domain="[('tag_ids', 'ilike', 'LOCAL')]"/>
+                    <filter string="Mécanique" name="prodcut_tmpl_macanique"
+                            domain="[('tag_ids', 'ilike', 'MECANIQUE')]"/>
+                    <filter string="Hydraulique" name="prodcut_tmpl_hydraulique"
+                            domain="[('tag_ids', 'ilike', 'HYDRAULIQUE')]"/>
+                    <filter string="Divers" name="prodcut_tmpl_divers"
+                            domain="[('tag_ids', 'ilike', 'DIVERS')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_tags_form" model="ir.ui.view">
+            <field name="name">product.template.tags.form</field>
+            <field name="model">product.tags</field>
+            <field name="arch" type="xml">
+                <form string="Étiquettes de produits">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_template_tags_tree" model="ir.ui.view">
+            <field name="name">product.template.tags.tree</field>
+            <field name="model">product.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Étiquettes de produits">
+                    <field name="name"/>
+                    <field name="color"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_product_tags" model="ir.actions.act_window">
+            <field name="name">Étiquettes de produits</field>
+            <field name="res_model">product.tags</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Étiquettes"
+                  id="product_tags_menu_id"
+                  parent="stock.menu_stock_config_settings"
+                  action="action_product_tags"
+        />
+    </data>
+</odoo>
