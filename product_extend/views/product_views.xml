@@ -36,8 +36,11 @@
                             domain="[('tag_ids', 'ilike', 'IMPORT')]"/>
                     <filter string="Local" name="prodcut_tmpl_export"
                             domain="[('tag_ids', 'ilike', 'LOCAL')]"/>
+                    <separator />
                     <filter string="Mécanique" name="prodcut_tmpl_macanique"
                             domain="[('tag_ids', 'ilike', 'MECANIQUE')]"/>
+                    <filter string="Éléctrique" name="prodcut_tmpl_electrique"
+                            domain="[('tag_ids', 'ilike', 'ELECTRIQUE')]"/>
                     <filter string="Hydraulique" name="prodcut_tmpl_hydraulique"
                             domain="[('tag_ids', 'ilike', 'HYDRAULIQUE')]"/>
                     <filter string="Divers" name="prodcut_tmpl_divers"
